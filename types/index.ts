@@ -1,0 +1,30 @@
+export interface ImgurType {
+  id: string;
+  title: string;
+  description?: any;
+  datetime: number;
+  type: string;
+  animated: boolean;
+  width: number;
+  height: number;
+  size: number;
+  views: number;
+  bandwidth: number;
+  vote?: any;
+  favorite: boolean;
+  nsfw: boolean;
+  section: string;
+  account_url?: any;
+  account_id?: any;
+  is_ad: boolean;
+  tags: any[];
+  in_most_viral: boolean;
+  in_gallery: boolean;
+  link: string;
+  comment_count?: any;
+  ups?: any;
+  downs?: any;
+  points?: any;
+  score: number;
+  is_album: boolean;
+}
