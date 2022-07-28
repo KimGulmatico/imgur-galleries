@@ -16,7 +16,7 @@ const createWindow = () => {
     }
   });
 
-  win.loadURL('https://imgur-galleries-jk6rv4h5q-kimgulmatico.vercel.app')
+  win.loadURL('https://imgur-galleries.vercel.app/')
 
   win.webContents.openDevTools();
 };
