@@ -2,6 +2,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Setting up the project
+
+```bash
+git clone 
+cd imgur-galleries
+npm install
+```
+
 To run the electron app in windows or mac
 
 ```bash
