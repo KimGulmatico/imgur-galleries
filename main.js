@@ -5,7 +5,7 @@ require('@electron/remote/main').initialize()
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 800,
+    width: 950,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -18,7 +18,7 @@ const createWindow = () => {
 
   win.loadURL('https://imgur-galleries.vercel.app/')
 
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools(); //Uncomment to show dev tools
 };
 
 
