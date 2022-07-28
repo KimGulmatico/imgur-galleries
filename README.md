@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Setting up the project
 
 ```bash
-git clone 
+git clone https://github.com/KimGulmatico/imgur-galleries.git
 cd imgur-galleries
 npm install
 ```
