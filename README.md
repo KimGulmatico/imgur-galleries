@@ -2,6 +2,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Setting up the project
+
+```bash
+git clone https://github.com/KimGulmatico/imgur-galleries.git
+cd imgur-galleries
+npm install
+```
+
 To run the electron app in windows or mac
 
 ```bash
@@ -19,7 +27,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Packaging
 
-Creating a build, this will create a build for the current operating system you have.
+Creating a build, this will create a build for the current operating system you have. build files is in /dist folder
 
 ```bash
 npm run electron:build
