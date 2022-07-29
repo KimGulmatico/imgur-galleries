@@ -13,10 +13,12 @@ const Home: NextPage = () => {
   const { width: w, height, ref } = useResizeDetector();
   const [width, setWidth] = useState(270.66)
   const [error, setError] = useState(null)
+  const [subreddit, setSubreddit] = useState('pics')
+
 
   const fetchSubredddit = async () => {
     try {
-      const res = await axios.get('https://api.imgur.com/3/gallery/r/pics', {
+      const res = await axios.get(`https://api.imgur.com/3/gallery/r/${subreddit}`, {
         headers: { Authorization: `Client-ID ${CLIENT_ID}` }
       })
       if (res) { setGalleries(res.data.data); console.log(res.data) }
@@ -29,7 +31,6 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     w && setWidth(w)
-    console.log(w)
   }, [w])
 
   useEffect(() => {
@@ -39,15 +40,23 @@ const Home: NextPage = () => {
 
   return (
     <div className="max-w-[900px] mr-auto ml-auto">
-      {error && <p className="text-gray-400 py-3">Use https to access imgur api (using fallback response data for development)</p>}
-
+      <div className="p-3 pt-5 text-center">
+        <h3 className="text-3xl text-gray-200">Welcome to imgur subreddits galleries</h3>
+        <div className="flex items-center justify-center gap-3">
+          <div className="flex justify-end items-end gap-3">
+            <input role="input" className="bg-slate-900 mt-7 w-[250px] md:w-[350px] rounded-lg border border-teal-700 focus:border-teal-500 focus:outline-none p-2 text-2xl text-gray-300" type="text" value={subreddit} onChange={(e) => setSubreddit(e.target.value)}/>
+            <button className="p-[11px] bg-teal-500 rounded-lg text-lg" onClick={() => fetchSubredddit()}>Submit</button>
+          </div>
+        </div>
+        {error && <p className="text-gray-400 py-3">Use https to access imgur api (using fallback response data for development)</p>}
+      </div>
       <div className="p-7 h-screen bg-slate-900 overflow-y-auto rounded-lg my-5">
         <div className="columns-2 md:columns-3">
           {
             galleries.map((imgur, i) => {
               const widthScale = width / imgur.width
 
-              return <div key={`imgur-${i}`} ref={i == 0 ? ref : null} className={`anim flex-col text-white rounded-lg inline-block overflow-hidden mt-[10px] cursor-pointer`}>
+              return <div data-testid="imgur" role="imgurImage" key={`imgur-${i}`} ref={i == 0 ? ref : null} className={`anim flex-col text-white rounded-lg inline-block overflow-hidden mt-[10px] cursor-pointer`}>
                 <Image
                   alt={`imgur-link-${i}`}
                   placeholder="blur"
