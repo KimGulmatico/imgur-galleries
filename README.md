@@ -33,4 +33,11 @@ Creating a build, this will create a build for the current operating system you 
 npm run electron:build
 ```
 
+### Testing
+
+Creating a build, this will create a build for the current operating system you have. build files is in /dist folder
+
+```bash
+npm run test
+```
 The Imgur api restricts app that is not hosted in https so I deployed it on vercel, using the development hosted in http://localhost:3000 will use the fallback data response hardcoded from imgur for development purposes.
