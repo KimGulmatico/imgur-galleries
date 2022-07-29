@@ -14,10 +14,12 @@ const Home: NextPage = () => {
   const [width, setWidth] = useState(270.66)
   const [error, setError] = useState(null)
   const [subreddit, setSubreddit] = useState('pics')
+  const [loading, setLoading] = useState(true)
 
 
   const fetchSubredddit = async () => {
     try {
+      setLoading(true)
       const res = await axios.get(`https://api.imgur.com/3/gallery/r/${subreddit}`, {
         headers: { Authorization: `Client-ID ${CLIENT_ID}` }
       })
@@ -25,6 +27,7 @@ const Home: NextPage = () => {
     } catch (err: any) {
       setGalleries(fallbackResponseData.data)
       setError(err.response.data.data.error)
+      setLoading(false)
       console.log(err.response.data.data.error)
     }
   }
@@ -45,7 +48,7 @@ const Home: NextPage = () => {
         <div className="flex items-center justify-center gap-3">
           <div className="flex justify-end items-end gap-3">
             <input role="input" className="bg-slate-900 mt-7 w-[250px] md:w-[350px] rounded-lg border border-teal-700 focus:border-teal-500 focus:outline-none p-2 text-2xl text-gray-300" type="text" value={subreddit} onChange={(e) => setSubreddit(e.target.value)}/>
-            <button className="p-[11px] bg-teal-500 rounded-lg text-lg" onClick={() => fetchSubredddit()}>Submit</button>
+            <button className="p-[11px] bg-teal-500 rounded-lg text-lg" onClick={() => fetchSubredddit()}>{loading?'Loading..':'Submit'}</button>
           </div>
         </div>
         {error && <p className="text-gray-400 py-3">Use https to access imgur api (using fallback response data for development)</p>}
