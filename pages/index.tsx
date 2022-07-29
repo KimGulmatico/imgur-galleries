@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   const [width, setWidth] = useState(270.66)
   const [error, setError] = useState(null)
   const [subreddit, setSubreddit] = useState('pics')
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
 
   const fetchSubredddit = async () => {
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
       const res = await axios.get(`https://api.imgur.com/3/gallery/r/${subreddit}`, {
         headers: { Authorization: `Client-ID ${CLIENT_ID}` }
       })
-      if (res) { setGalleries(res.data.data); console.log(res.data) }
+      if (res) { setGalleries(res.data.data); console.log(res.data); setLoading(false)}
     } catch (err: any) {
       setGalleries(fallbackResponseData.data)
       setError(err.response.data.data.error)
